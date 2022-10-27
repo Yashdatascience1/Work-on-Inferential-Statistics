@@ -408,7 +408,7 @@ elif choice == 'Confidence Interval(CI) Estimation':
                 elif ext == '.xlsx':
                     df = pd.read_excel(uploaded_file,header=None)
                     with st.expander('Enter these values for estimating the CI'):
-                ci_level = st.number_input('Enter the confidence interval for which calculation needs to be done',min_value=0.0,max_value=1.0,value=0.1)
+                        ci_level = st.number_input('Enter the confidence interval for which calculation needs to be done',min_value=0.0,max_value=1.0,value=0.1)
                         sample_mean = np.mean(df)[0]
                         sample_size = df.shape[0]
                         sample_sd = np.std(df[0])
