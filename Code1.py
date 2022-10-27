@@ -494,7 +494,7 @@ elif choice == 'Confidence Interval(CI) Estimation':
             if X1bar>0 and X2bar>0 and S1>0 and S2>0 and n1>0 and n2>0:
                 ll,ul=confidence_interval_mean_difference(X1bar,X2bar,S1,S2,n1,n2,ci_level)
                 with st.expander('Results are:'):
-                    st.success("One can be {:.0f}% confident that the population proportion will lie between {} and {}".format(ci_level*100,ll,ul))
+                    st.success("One can be {:.0f}% confident that the difference in means of the two populations will lie between {} and {}".format(ci_level*100,np.round(ll,4),np.round(ul,4)))
         else:
             uploaded_file = st.file_uploader("Upload .csv or .xlsx file only with no header")
             if uploaded_file is not None:
@@ -514,7 +514,7 @@ elif choice == 'Confidence Interval(CI) Estimation':
                         st.json(dict1)
                     ll,ul=confidence_interval_mean_difference(X1bar,X2bar,S1,S2,n1,n2,ci_level)
                     with st.expander('Results are:'):
-                        st.success("One can be {:.0f}% confident that the population proportion will lie between {} and {}".format(ci_level*100,ll,ul))
+                        st.success("One can be {:.0f}% confident that the difference in means of the two populations will lie between {} and {}".format(ci_level*100,np.round(ll,4),np.round(ul,4)))
                 elif ext == '.xlsx':
                     df = pd.read_excel(uploaded_file,header=None)
                     ci_level = st.number_input('Enter the confidence interval for which calculation needs to be done',min_value=0.0,max_value=1.0)
@@ -529,7 +529,7 @@ elif choice == 'Confidence Interval(CI) Estimation':
                         st.json(dict1)
                     ll,ul=confidence_interval_mean_difference(X1bar,X2bar,S1,S2,n1,n2,ci_level)
                     with st.expander('Results are:'):
-                        st.success("One can be {:.0f}% confident that the population proportion will lie between {} and {}".format(ci_level*100,ll,ul))
+                        st.success("One can be {:.0f}% confident that the difference in means of the two populations will lie between {} and {}".format(ci_level*100,np.round(ll,4),np.round(ul,4)))
                 else:
                     st.warning("Please upload .csv or .xlsx file only")
 
