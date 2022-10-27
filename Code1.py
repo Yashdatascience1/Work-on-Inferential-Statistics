@@ -654,6 +654,7 @@ elif choice == 'Hypothesis testing':
         tup1 = tuple(('Individual values','Data in excel or csv'))
         mode_of_input = st.radio("How would you like to input the data?",tup1)
         test_type = st.selectbox('What kind of test it is?',('Left tail test','Right tail test','Two tail test'))
+        z_stat = False
         if mode_of_input == 'Individual values':
             checkbox1 = st.checkbox('Would you like to enter sample proportion?')
             if checkbox1:
