@@ -415,7 +415,10 @@ elif choice == 'Confidence Interval(CI) Estimation':
                     with st.expander('Your input data is'):
                         dict1 = {'Sample Standard Deviation':sample_sd,'Sample mean':sample_mean,'Sample size':sample_size,'Confidence Interval':str(ci_level*100)+'%'}
                         st.json(dict1)
+                    if ci_level>0 and uploaded_file is not None:
                         ll,ul=ci_mu_sigma_known(sample_sd,sample_mean,sample_size,ci_level)
+                    else:
+                        pass
                     with st.expander('Results are:'):
                         st.success("One can be {:.0f}% confident that the population mean will lie between {} and {}".format(ci_level*100,np.round(ll,4),np.round(ul,4)))
                 else:
