@@ -468,7 +468,7 @@ elif choice == 'Confidence Interval(CI) Estimation':
                         st.success("One can be {:.0f}% confident that the population proportion will lie between {:.2f}% and {:.2f}%".format(ci_level*100,ll*100,ul*100))
                 elif ext == '.xlsx':
                     df = pd.read_excel(uploaded_file,header=None)
-                    ci_level = st.number_input('Enter the confidence interval for which calculation needs to be done',min_value=0.0,max_value=1.0)
+                    ci_level = st.number_input('Enter the confidence interval for which calculation needs to be done',min_value=0.0,max_value=1.0,value=0.1)
                     unique_values = tuple(df[0].unique())
                     chosen_unique_value = st.radio('Choose one unique value',unique_values)
                     X = df.loc[df[0]==chosen_unique_value].shape[0]
