@@ -743,7 +743,7 @@ elif choice == 'Hypothesis testing':
             n2 = st.number_input("What is the size for sample 2?")
             alpha = st.number_input("What is the level of significance?")
             if Xbar1>0 and Xbar2>0 and S1>0 and S2>0 and n1>0 and n2>0:
-                t_stat,p_value,Decision=pooled_variance_t_test(Xbar1,Xbar2,S1,S2,n1,n2,alpha,test_type)
+                t_stat,p_value,Decision=pooled_variance_t_test(hypothesized_mean_difference,Xbar1,Xbar2,S1,S2,n1,n2,alpha,test_type)
                 with st.expander('Results are:'):
                     st.success("T-stat is {}  \np-value is {}  \nTherefore, {}".format(np.round(t_stat,3),np.round(p_value,3),Decision))
         else:
