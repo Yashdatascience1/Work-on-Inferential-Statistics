@@ -45,6 +45,8 @@ def ci_mu_sigma_known(pop_sd,sample_mean,sample_size,ci_level):
         lower_limit = sample_mean - (t_alpha_by_2*term1)
         upper_limit = sample_mean + (t_alpha_by_2*term1)
         return lower_limit,upper_limit
+    else:
+        pass
 
 def ci_mu_sigma_unknown(sample_sd,sample_mean,sample_size,ci_level):
     if sample_sd>0 and sample_mean>0 and sample_size>0 and ci_level>0:
