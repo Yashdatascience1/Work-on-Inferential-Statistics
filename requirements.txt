@@ -85,7 +85,6 @@ qtpy==2.2.1
 railroad==0.5.0
 recommonmark==0.7.1
 reportlab==3.6.12
-Res==0.1.7
 rfc3339_validator==0.1.4
 rfc3986_validator==0.1.1
 rfc3987==1.3.8
