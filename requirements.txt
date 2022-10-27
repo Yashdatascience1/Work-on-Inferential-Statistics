@@ -13,7 +13,6 @@ cairocffi==1.4.0
 Carbon==1.1.10
 cftime==1.6.2
 chart_studio==1.1.0
-Cheetah==2.4.4
 cherrypy==18.8.0
 cloudpickle==2.2.0
 ConfigParser==5.3.0
