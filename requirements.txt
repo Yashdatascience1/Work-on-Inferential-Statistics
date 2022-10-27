@@ -89,7 +89,6 @@ rfc3339_validator==0.1.4
 rfc3986_validator==0.1.1
 rfc3987==1.3.8
 rocket==1.2.8
-rpy2==3.5.5
 s3fs==2022.10.0
 scikit_learn==1.1.3
 scikits.talkbox==0.2.5
