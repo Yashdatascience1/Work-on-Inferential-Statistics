@@ -46,7 +46,6 @@ ipykernel==6.16.2
 ipython==8.5.0
 ipywidgets==8.0.2
 isoduration==20.11.0
-jnius==1.1.0
 joblib==1.2.0
 JPype1==1.4.0
 jsonpointer==2.3
