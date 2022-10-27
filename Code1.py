@@ -599,7 +599,7 @@ elif choice == 'Hypothesis testing':
 
     elif choice1 == 'One-sample test for {} when {} is unknown'.format(population_mean,population_standard_deviation):
         st.markdown(""" 
-        ##### Hypothesis testing for population mean when population standard deviation is known
+        ##### Hypothesis testing for population mean when population standard deviation is unknown
         ###### Assumption made:
                 """)
         st.info('If sample size is small(<30), then underlying population distribution is normal')
