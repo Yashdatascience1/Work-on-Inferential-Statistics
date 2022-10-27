@@ -434,10 +434,11 @@ elif choice == 'Confidence Interval(CI) Estimation':
                 checkbox1 = st.checkbox('Would you like to enter sample proportion?')
                 if checkbox1:
                     sample_prop = st.number_input('Enter the value of sample proportion')
+                    ci_level = st.number_input('Enter the confidence interval for which calculation needs to be done',min_value=0.0,max_value=1.0,value=0.1)
                 else:
                     X = st.number_input('Enter the number of items having the characteristic')
                     sample_size = st.number_input('Enter the size of the sample')
-                    ci_level = st.number_input('Enter the confidence interval for which calculation needs to be done',min_value=0.0,max_value=1.0)
+                    ci_level = st.number_input('Enter the confidence interval for which calculation needs to be done',min_value=0.0,max_value=1.0,value=0.1)
             if X>0 and sample_size>0 and ci_level>0:
                 ll,ul=ci_prop_pop_sample(X,sample_size,ci_level)
                 with st.expander('Results are:'):
