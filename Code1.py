@@ -656,23 +656,26 @@ elif choice == 'Hypothesis testing':
         test_type = st.selectbox('What kind of test it is?',('Left tail test','Right tail test','Two tail test'))
         if mode_of_input == 'Individual values':
             checkbox1 = st.checkbox('Would you like to enter sample proportion?')
+            z_stat=0
             if checkbox1:
                 sample_prop = st.number_input('Enter the value of sample proportion')
+                pop_prop = st.number_input('Enter the population proportion')
+                nobs = st.number_input('Enter the sample size')
+                alpha = st.number_input('Enter the level of significance',min_value=0.0,max_value=1.0)
+                z_stat,p_value,Decision=one_sample_proportion_ztest(sample_prop,pop_prop,nobs,alpha,test_type)
             else:
                 count = st.number_input('Enter the number of items having the desired characteristic')
-            pop_prop = st.number_input('Enter the population proportion')
-            nobs = st.number_input('Enter the sample size')
-            alpha = st.number_input('Enter the level of significance',min_value=0.0,max_value=1.0)
-            if count>0 and nobs>0 and alpha>0 and pop_prop>0:
+                pop_prop = st.number_input('Enter the population proportion')
+                nobs = st.number_input('Enter the sample size')
+                alpha = st.number_input('Enter the level of significance',min_value=0.0,max_value=1.0)
+                if count>0 and nobs>0 and alpha>0 and pop_prop>0:
                 sample_prop = count/nobs
                 z_stat,p_value,Decision=one_sample_proportion_ztest(sample_prop,pop_prop,nobs,alpha,test_type)
+            
+            if z_stat>0:
                 with st.expander('Results are:'):
                     st.success("Z-stat is {}  \np-value is {}  \nTherefore, {}".format(np.round(z_stat,5),np.round(p_value,5),Decision))
-            elif checkbox1!=False and alpha>0 and pop_prop>0:
-                z_stat,p_value,Decision=one_sample_proportion_ztest(sample_prop,pop_prop,nobs,alpha,test_type)
-                with st.expander('Results are:'):
-                    st.success("Z-stat is {}  \np-value is {}  \nTherefore, {}".format(np.round(z_stat,5),np.round(p_value,5),Decision))
-        
+            
         else:
             uploaded_file = st.file_uploader("Upload .csv or .xlsx file only with no header")
             if uploaded_file is not None:
