@@ -60,7 +60,6 @@ mpmath==1.2.1
 mtrand==0.1
 munkres==1.1.4
 mypy==0.982
-numarray==1.5.1
 numdifftools==0.9.40
 Numeric==24.2
 numexpr==2.8.4
