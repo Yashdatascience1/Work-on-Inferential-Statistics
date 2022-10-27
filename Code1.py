@@ -669,8 +669,8 @@ elif choice == 'Hypothesis testing':
                 nobs = st.number_input('Enter the sample size')
                 alpha = st.number_input('Enter the level of significance',min_value=0.0,max_value=1.0)
                 if count>0 and nobs>0 and alpha>0 and pop_prop>0:
-                sample_prop = count/nobs
-                z_stat,p_value,Decision=one_sample_proportion_ztest(sample_prop,pop_prop,nobs,alpha,test_type)
+                    sample_prop = count/nobs
+                    z_stat,p_value,Decision=one_sample_proportion_ztest(sample_prop,pop_prop,nobs,alpha,test_type)
             
             if z_stat>0:
                 with st.expander('Results are:'):
