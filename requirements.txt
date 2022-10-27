@@ -70,6 +70,7 @@ numarray==1.5.1
 numdifftools==0.9.40
 Numeric==24.2
 numexpr==2.8.4
+numpy==1.23.4
 odfpy==1.4.1
 olefile==0.46
 openpyxl==3.0.10
