@@ -67,7 +67,7 @@ def ci_prop_pop_sample(X,sample_size,ci_level):
     upper_limit = p + (z_alpha_by_2*term2)
     return lower_limit,upper_limit
 
-def ci_prop_pop_sample_p_given(p_given,ci_level):
+def ci_prop_pop_sample_p_given(p_given,ci_level,sample_size):
     alpha = 1 - ci_level
     z_alpha_by_2 = np.abs(stats.norm.ppf(alpha/2,0,1))
     p = p_given
@@ -434,20 +434,18 @@ elif choice == 'Confidence Interval(CI) Estimation':
                 checkbox1 = st.checkbox('Would you like to enter sample proportion?')
                 if checkbox1:
                     sample_prop = st.number_input('Enter the value of sample proportion')
+                    sample_size = st.number_input('Enter the size of the sample',value=10)
                     ci_level = st.number_input('Enter the confidence interval for which calculation needs to be done',min_value=0.0,max_value=1.0,value=0.1)
+                    ll,ul=ci_prop_pop_sample_p_given(sample_prop,ci_level,sample_size)
                 else:
                     X = st.number_input('Enter the number of items having the characteristic')
                     sample_size = st.number_input('Enter the size of the sample')
                     ci_level = st.number_input('Enter the confidence interval for which calculation needs to be done',min_value=0.0,max_value=1.0,value=0.1)
-            if X>0 and sample_size>0 and ci_level>0:
-                ll,ul=ci_prop_pop_sample(X,sample_size,ci_level)
-                with st.expander('Results are:'):
-                    st.success("One can be {:.0f}% confident that the population proportion will lie between {:.2f}% and {:.2f}%".format(ci_level*100,ll*100,ul*100))
-            elif checkbox1==True:
-                ll,ul=ci_prop_pop_sample_p_given(sample_prop,ci_level)
-                with st.expander('Results are:'):
-                    st.success("One can be {:.0f}% confident that the population proportion will lie between {:.2f}% and {:.2f}%".format(ci_level*100,ll*100,ul*100))
-
+                    if X>0 and sample_size>0 and ci_level>0:
+                        ll,ul=ci_prop_pop_sample(X,sample_size,ci_level)
+                
+            with st.expander('Results are:'):
+                st.success("One can be {:.0f}% confident that the population proportion will lie between {:.2f}% and {:.2f}%".format(ci_level*100,ll*100,ul*100))
         else:
             uploaded_file = st.file_uploader("Upload .csv or .xlsx file only with no header")
             if uploaded_file is not None:
