@@ -178,15 +178,7 @@ def one_sample_proportion_ztest(sample_prop,p,n,alpha,test_type):
             p_value=min(p_value1,p_value2)
             return z_stat,p_value,'Fail to reject the null hypothesis'
 
-def pooled_variance_t_test(Xbar1,Xbar2,S1,S2,n1,n2,alpha,test_type):
-    hypothesized_mean_difference = int(input("Enter the hypothesized difference in means for the two populations"))
-    Xbar1 = float(input("Enter the mean for sample 1 :"))
-    Xbar2 = float(input("Enter the mean for sample 2 :"))
-    S1 = float(input("Enter the standard deviation for sample 1 :"))
-    S2 = float(input("Enter the standard deviation for sample 2 :"))
-    n1 = int(input("What is the size for sample 1?"))
-    n2 = int(input("What is the size for sample 2?"))
-    alpha = float(input("What is the level of significance?"))
+def pooled_variance_t_test(hypothesized_mean_difference,Xbar1,Xbar2,S1,S2,n1,n2,alpha,test_type):
     pooled_variance = (((n1-1)*(S1**2)+(n2-1)*(S2**2))/((n1-1)+(n2-1)))**0.5
     Nr = ((Xbar1 - Xbar2) - (hypothesized_mean_difference))
     Dr = pooled_variance*(((1/n1)+(1/n2))**0.5)
