@@ -74,7 +74,6 @@ PyInstaller==5.6.1
 pymysql==1.0.2
 pyOpenSSL==22.1.0
 pyperf==2.4.1
-PyQt4==4.11.4
 PyQt5==5.15.7
 PyQt6==6.4.0
 pyrsistent==0.18.1
