@@ -408,7 +408,7 @@ elif choice == 'Confidence Interval(CI) Estimation':
                 elif ext == '.xlsx':
                     df = pd.read_excel(uploaded_file,header=None)
                     with st.expander('Enter these values for estimating the CI'):
-                        ci_level = st.number_input('Enter the confidence interval for which calculation needs to be done',min_value=0.0,max_value=1.0)
+                ci_level = st.number_input('Enter the confidence interval for which calculation needs to be done',min_value=0.0,max_value=1.0,value=0.1)
                         sample_mean = np.mean(df)[0]
                         sample_size = df.shape[0]
                         sample_sd = np.std(df[0])
@@ -417,10 +417,10 @@ elif choice == 'Confidence Interval(CI) Estimation':
                         st.json(dict1)
                     if ci_level!=0 and uploaded_file is not None:
                         ll,ul=ci_mu_sigma_known(sample_sd,sample_mean,sample_size,ci_level)
+                        with st.expander('Results are:'):
+                            st.success("One can be {:.0f}% confident that the population mean will lie between {} and {}".format(ci_level*100,np.round(ll,4),np.round(ul,4)))
                     else:
                         pass
-                    with st.expander('Results are:'):
-                        st.success("One can be {:.0f}% confident that the population mean will lie between {} and {}".format(ci_level*100,np.round(ll,4),np.round(ul,4)))
                 else:
                     st.warning("Please upload .csv or .xlsx file only") 
     elif choice1 == 'CI for {} basis {}'.format(population_proportion,sample_proportion):
