@@ -656,7 +656,6 @@ elif choice == 'Hypothesis testing':
         test_type = st.selectbox('What kind of test it is?',('Left tail test','Right tail test','Two tail test'))
         if mode_of_input == 'Individual values':
             checkbox1 = st.checkbox('Would you like to enter sample proportion?')
-            z_stat=0
             if checkbox1:
                 sample_prop = st.number_input('Enter the value of sample proportion')
                 pop_prop = st.number_input('Enter the population proportion')
@@ -672,7 +671,7 @@ elif choice == 'Hypothesis testing':
                     sample_prop = count/nobs
                     z_stat,p_value,Decision=one_sample_proportion_ztest(sample_prop,pop_prop,nobs,alpha,test_type)
             
-            if z_stat>0:
+            if z_stat:
                 with st.expander('Results are:'):
                     st.success("Z-stat is {}  \np-value is {}  \nTherefore, {}".format(np.round(z_stat,5),np.round(p_value,5),Decision))
             
