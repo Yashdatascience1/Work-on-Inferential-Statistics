@@ -415,7 +415,7 @@ elif choice == 'Confidence Interval(CI) Estimation':
                     with st.expander('Your input data is'):
                         dict1 = {'Sample Standard Deviation':sample_sd,'Sample mean':sample_mean,'Sample size':sample_size,'Confidence Interval':str(ci_level*100)+'%'}
                         st.json(dict1)
-                    if ci_level>0 and uploaded_file is not None:
+                    if ci_level!=0 and uploaded_file is not None:
                         ll,ul=ci_mu_sigma_known(sample_sd,sample_mean,sample_size,ci_level)
                     else:
                         pass
