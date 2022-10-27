@@ -178,7 +178,7 @@ def one_sample_proportion_ztest(sample_prop,p,n,alpha,test_type):
             p_value=min(p_value1,p_value2)
             return z_stat,p_value,'Fail to reject the null hypothesis'
 
-def pooled_variance_t_test(Xbar1,Xbar2,S1,S2,n1,n2,alpha):
+def pooled_variance_t_test(Xbar1,Xbar2,S1,S2,n1,n2,alpha,test_type):
     hypothesized_mean_difference = int(input("Enter the hypothesized difference in means for the two populations"))
     Xbar1 = float(input("Enter the mean for sample 1 :"))
     Xbar2 = float(input("Enter the mean for sample 2 :"))
@@ -191,22 +191,21 @@ def pooled_variance_t_test(Xbar1,Xbar2,S1,S2,n1,n2,alpha):
     Nr = ((Xbar1 - Xbar2) - (hypothesized_mean_difference))
     Dr = pooled_variance*(((1/n1)+(1/n2))**0.5)
     t_stat = Nr/Dr
-    test_type = input("Which test do you want to conduct A) Left tail test B) Right tail test C) Two tail test. [A/B/C]?:")
-    if test_type=="A":
+    if test_type=="Left tail test":
         critical_region_value = stats.t.ppf(alpha,n1+n2-1)
         p_value = stats.t.cdf(t_stat,n1+n2-1)
         if t_stat<critical_region_value:
             return t_stat,p_value,'Reject the null hypothesis'
         else:
             return t_stat,p_value,'Fail to reject the null hypothesis'
-    if test_type=="B":
+    if test_type=="Right tail test":
         critical_region_value = np.abs(stats.t.ppf(alpha,n1+n2-1))
         p_value = 1-stats.t.cdf(t_stat,n1+n2-1)
         if t_stat>critical_region_value:
             return t_stat,p_value,'Reject the null hypothesis'
         else:
             return t_stat,p_value,'Reject the null hypothesis'
-    if test_type=="C":
+    if test_type=="Two tail test":
         critical_region_value = stats.t.ppf((alpha/2),n1+n2-1)
         if t_stat<critical_region_value:
             p_value = stats.t.cdf(t_stat,n1+n2-1)
@@ -752,7 +751,7 @@ elif choice == 'Hypothesis testing':
             n2 = st.number_input("What is the size for sample 2?")
             alpha = st.number_input("What is the level of significance?")
             if Xbar1>0 and Xbar2>0 and S1>0 and S2>0 and n1>0 and n2>0:
-                t_stat,p_value,Decision=pooled_variance_t_test(Xbar1,Xbar2,S1,S2,n1,n2,alpha)
+                t_stat,p_value,Decision=pooled_variance_t_test(Xbar1,Xbar2,S1,S2,n1,n2,alpha,test_type)
                 with st.expander('Results are:'):
                     st.success("T-stat is {}  \np-value is {}  \nTherefore, {}".format(np.round(t_stat,3),np.round(p_value,3),Decision))
         else:
