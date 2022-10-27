@@ -429,6 +429,8 @@ elif choice == 'Confidence Interval(CI) Estimation':
                 """)
         tup1 = tuple(('Individual values','Data in excel or csv'))
         mode_of_input = st.radio("How would you like to input the data?",tup1)
+        ll=0
+        ul=0
         if mode_of_input == 'Individual values':
             with st.expander('Enter the values for estimating the CI'):
                 checkbox1 = st.checkbox('Would you like to enter sample proportion?')
@@ -443,9 +445,11 @@ elif choice == 'Confidence Interval(CI) Estimation':
                     ci_level = st.number_input('Enter the confidence interval for which calculation needs to be done',min_value=0.0,max_value=1.0,value=0.1)
                     if X>0 and sample_size>0 and ci_level>0:
                         ll,ul=ci_prop_pop_sample(X,sample_size,ci_level)
-                
-            with st.expander('Results are:'):
-                st.success("One can be {:.0f}% confident that the population proportion will lie between {:.2f}% and {:.2f}%".format(ci_level*100,ll*100,ul*100))
+            
+            if ll>0 and ul>0:
+
+                with st.expander('Results are:'):
+                    st.success("One can be {:.0f}% confident that the population proportion will lie between {:.2f}% and {:.2f}%".format(ci_level*100,ll*100,ul*100))
         else:
             uploaded_file = st.file_uploader("Upload .csv or .xlsx file only with no header")
             if uploaded_file is not None:
