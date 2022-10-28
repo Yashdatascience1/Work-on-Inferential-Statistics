@@ -975,7 +975,7 @@ elif choice == 'Hypothesis testing':
                     model = ols(formula,df).fit()
                     aov_table = anova_lm(model)
                     with st.expander('Result of main and interaction effect of {} and {} on {}'.format(indep_cols[0],indep_cols[1],dep_col)):
-                        st.info('This analysis is checking if {} is dependent on {}'.format(dep_col,indep_col))
+                        st.info('This analysis is checking if {} is dependent on {} and {} and if there is an interaction effect between {} and {}'.format(dep_col,indep_cols[0],indep_cols[1],indep_cols[0],indep_cols[1]))
                         st.table(aov_table)
                     fig = plt.figure()
                     p=sns.pointplot(x=df[indep_cols[0]],y=df[dep_col],ci=None,hue=df[indep_cols[1]])
