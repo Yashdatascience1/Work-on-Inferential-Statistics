@@ -1031,7 +1031,7 @@ elif choice == 'Hypothesis testing':
                     df = pd.read_csv(uploaded_file)
                     cat_col = df.select_dtypes(exclude = [np.number]).columns.tolist()
                     cat_1 = st.selectbox('Choose the first category feature',tuple(cat_col))
-                    cat_col1 = df.drop(cat_1,axis=1).columns.tolist()
+                    cat_col1 = df.drop(cat_1,axis=1).select_dtypes(exclude = [np.number]).columns.tolist()
                     cat_2 = st.selectbox('Choose the seond category feature',tuple(cat_col1))
                     alpha = st.number_input('Enter the level of significance for the test')
                     df1 = pd.crosstab(df[cat_1],df[cat_2])
