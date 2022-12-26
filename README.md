@@ -14,10 +14,10 @@ This part deals with answering the question: **With what confidence can you say 
 
 With the app you will be able to:
 
-1.Estimate the confidence interval for population mean(μ) when population standard deviation(σ) is known
-2.Estimate the confidence interval for population mean(μ) when population standard deviation(σ) is unknown
-3.Estimate the confidence interval for difference between two means
-4.Estimate the confidence interval for population proportion(π) basis the sample proportion(p̂)
+1. Estimate the confidence interval for population mean(μ) when population standard deviation(σ) is known
+2. Estimate the confidence interval for population mean(μ) when population standard deviation(σ) is unknown
+3. Estimate the confidence interval for difference between two means
+4. Estimate the confidence interval for population proportion(π) basis the sample proportion(p̂)
 
 
 
